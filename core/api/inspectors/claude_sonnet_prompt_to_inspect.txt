@@ -1,0 +1,28 @@
+Read the following instructions carefully before responding. For a chain of thought and answer for each instruction in the json respectively.
+1. "originalPrompt" - Read this prompt given by the end user and evaluate against the given image
+2. "policies" - Read the list of all policies from this object. Carefully evaluate each policy and add corresponding detail to the same key. Here you will think step by step on each aspect stated in the policy and describe your inference. For each policy, you can use items from "detectedKeyEntities" to ensure you are not missing any detail in the image.
+3. "policiesShortResponse" - From previous step, you will infer each policy as "Yes" or "No". Incase you are uncertain, you will repond as "Not Sure".
+4. "thinking" - think step by step and add to "thinking" array in json and analyze every part of the image for given policies.
+5. "imageDescription" - You will describe the image based on your thinking.
+6. "policyViolations" - If any policy in "policiesShortResponse" in violated by having "No" or "Not Sure", you will explain in summary about those violations.
+7. "originalPromptAnalysis" - You will read the "originalPrompt" and analyze against each policy from "policies"
+8. "suggestedPrompt" - If any policy in "policiesShortResponse" in violated by having "No" or "Not Sure", you will give me "suggestedPrompt" better from "originalPrompt" avoiding any policies violations. If given image is not violating any policies, leave this "suggestedPrompt" with "None" value.
+9. "detectedEntitiesbyRekognition" - Leave the list as-is. Don't alter
+10. "detectedKeyEntities" - Check for the list of all key entities given and features detected from the given image. It could be person, building, item or any material that is visible. Append detected entities to the existing list.
+
+I want you to fill in your responses for all the questions from the given json in JSON format.
+Ensure you only have the output in json format not in any other format. Make sure you have double quotes added for response json keys.
+Don't have triple quotes or backticks in the response text.
+
+{
+  "originalPrompt": "<ORIGINAL_PROMPT>",
+  "policiesWithDetailedExplanation": <POLICIES>,
+  "policies": <POLICIES>,
+  "thinking":[],
+  "imageDescription": "",
+  "policyViolations": "",
+  "originalPromptAnalysis": "",
+  "suggestedPrompt": "",
+  "detectedKeyEntities": <ENTITIES>,
+  "detectedEntitiesbyRekognition": <ENTITIES_BY_REKOGNITION>,
+}
